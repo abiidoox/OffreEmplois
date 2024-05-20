@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  th:replace="head_dashboards :: dash-head">
+</head>
+<body>
+<div id="wrapper">
+  <nav th:replace="Navbar_Recruteur :: navbar"/>
+  <div class="d-flex flex-column" id="content-wrapper">
+    <div id="content">
+      <nav th:replace="NavAll :: navbar"/>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="container justify-content-center">
+            <div class="row">
+              <div class="col-lg-12 mx-auto mb-4">
+                <div class="section-title text-center ">
+                </div>
+              </div>
+            </div>
+            <div class="row align-content-center card col-lg-10 m-auto py-5 mb-5 shadow">
+              <section class="clean-block clean-form dark col-lg-8 card-body">
+                <div class="container">
+                  <div class="block-heading">
+                    <h2 class="text-info text-center" style="color: #3C62D1 !important;">Information de l'annonce</h2>
+                  </div>
+                <form action="" method="post">
+                    <input type="hidden" id="id" name="id" th:value="${offre.id}"/>
+                    <div class="mb-3"><label class="form-label" for="name">Titre</label>
+                      <input class="form-control" disabled type="text" id="name" name="titre" th:value="${offre.titre}"></div>
+                    <div class="mb-3"><label class="form-label" for="Salaire" >Salaire</label>
+                      <input class="form-control" type="text" disabled id="Salaire" name="Salaire" th:value="${offre.salaire}"></div>
+                    <div class="mb-3"><label class="form-label"  for="message" >Description</label>
+                      <textarea class="form-control" id="message" disabled name="Description" rows="10" th:text="${offre.description}"></textarea></div>
+                  </form>
+
+                </div>
+
+              </section>
+            </div>
+              <div class="row align-content-center card col-lg-10 m-auto py-5 shadow">
+                <section class="clean-block clean-form dark col-lg-10 card-body">
+                    <div class="card">
+              <div class="card-header py-3 d-flex mb-2">
+                <p class="text-primary m-0 fw-bold col-6 ">Liste des candidats :</p>
+                <p class="text-primary m-0 fw-bold text-end col-6">Nombre de candidate: <span class="text-success" th:text="${nbr_candidats}"></span></p>
+              </div>
+              <div class="card-body mt-3 row">
+                <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                  <table class="table my-0" id="dataTable2">
+                    <thead>
+                    <tr>
+                      <th style="width: 20% !important;"></th>
+                      <th>Nom</th>
+                      <th>Prenom</th>
+                      <th>Lettre de motivation</th>
+                      <th>CV</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <form action="" method="get">
+                    <tr th:each="Candidature :${ListesCandidates}">
+                      <td><img class="rounded-circle me-2" width="30" height="30" th:src="@{'https://ui-avatars.com/api/?name=' + ${Candidature.che.nom+' '+Candidature.che.prenom}}"></td>
+                      <td th:text="${Candidature.che.nom}"></td>
+                      <td th:text="${Candidature.che.prenom}"></td>
+                      <td><a data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="afficher_model(this)" href="" >Lettre de motivation <textarea th:text="${Candidature.lettreMotivation}" hidden="hidden"></textarea></a></td>
+                      <td><a th:href="@{/cv/{cvName}(cvName=${Candidature.che.cv})}" target="_blank">Ouvrir CV</a></td>
+                    </tr>
+                    </form>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+                </section>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer th:replace="footer :: footer"></footer>
+  </div>
+  <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Lettre de motivation:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+         <textarea id="lettre_view" rows="10" class="form-control" readonly></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>
+<script src="/assets2/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets2/js/chart.min.js"></script>
+<script src="/assets2/js/bs-init.js"></script>
+<script src="/assets2/js/theme.js"></script>
+
+<script>
+  function afficher_model(a) {
+    var codeM = a.childNodes[1].innerText;
+    var td1 = document.getElementById("lettre_view");
+    td1.value = codeM;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  th:replace="head_dashboards :: dash-head">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+</head>
+<body>
+<div id="wrapper">
+    <nav th:replace="Navbar_Employer :: navbar"/>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <nav th:replace="NavAll :: navbar"/>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="container-fluid">
+                        <div class="row mb-3 mt-5">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card shadow mb-3">
+                                            <div class="card-header py-3">
+                                                <p class="text-primary m-0 fw-bold">Vos information</p>
+                                            </div>
+                                            <div class="card-body py-5">
+                                                <form th:action="@{/emp/edit}" method="post" th:object="${rec}" enctype="multipart/form-data">
+                                                    <input class="form-control" type="hidden" id="id"  name="id" th:value="${rec.id}" >
+                                                    <div class="row py-3">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="username"><strong>Nom</strong></label>
+                                                                <input class="form-control" type="text" id="username" placeholder="Nom" name="nom" th:value="${rec.getNom()}" control-id="ControlID-3"></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="form3Example2c"><strong>Prenom</strong></label>
+                                                                <input class="form-control" type="text" id="form3Example2c" placeholder="prenom" name="prenom" th:value="${rec.prenom}" control-id="ControlID-4">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row py-3">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="cv"><strong>CV </strong><span> (Introduire le nouveau cv)</span></label>
+                                                                <input class="form-control" type="file" id="cv" placeholder="cv" name="cvs" control-id="ControlID-3"></div>
+                                                                <div class="text-danger"><span th:text="${ErreurCv}"></span></div><div class="text-success"><span th:text="${Succes}"></span></div>
+                                                        </div>
+                                                    </div>
+                                                    <!--<div class="row py-3">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Mail</strong></label>
+                                                                <input class="form-control" type="email" id="first_name" placeholder="Mail" name="mail" th:value="${recruteur.utilisateurs.mail}" control-id="ControlID-5"></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Mot de passe</strong></label><input class="form-control" type="password" id="last_name" placeholder="Doe" name="password" th:value="${recruteur.utilisateurs.password.substring(0,8)}" control-id="ControlID-6"></div>
+                                                        </div>
+                                                    </div>-->
+                                                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" control-id="ControlID-7">Enregistrer</button></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer th:replace="footer :: footer"/>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script src="assets2/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets2/js/chart.min.js"></script>
+<script src="assets2/js/bs-init.js"></script>
+<script src="assets2/js/theme.js"></script>
+
+
+</body>
+</html>

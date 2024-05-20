@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  th:replace="head_dashboards :: dash-head">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+</head>
+<body>
+<div id="wrapper">
+    <nav th:replace="Navbar_Employer :: navbar"/>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <nav th:replace="NavAll :: navbar"/>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="container ">
+                        <div class="row justify-content-center mt-3">
+                            <div class="col-lg-12 mx-auto mb-4">
+                                <div class="section-title text-center ">
+                                    <h2>Postuler pour un poste</h2>
+                                    <p>Vous pouvez postuler pour un poste en remplissant le formulaire ci-dessous</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-10 w-auto bg-white  p-4 card mt3-5">
+                            <div class="row p-2 justify-content-center answer-sec">
+                                <div class="col-12 mt-2">
+                                    <div class="row">
+                                    <h3 class="col-8" for="">Postuler pour le poste : <span th:text="${offre.titre}"></span></h3>
+                                    <h3 class="col-4 text-end" for="">Le nombre de candidats : <span th:text="${nbr_candidats}"></span></h3>
+                                    </div>
+                                </div>
+                                <div class="col-10 mt-2 p-3 execute-sec">
+                                    <form th:action="@{/candidature/add}" method="post" >
+                                        <div class="mt-3">
+                                            <!-- inputs here -->
+                                            <input class="form-control" type="hidden" id="id"  name="id" th:value="${offre.id}" >
+                                            <div class="row py-3">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="username"><strong>Entreprise</strong></label>
+                                                        <input class="form-control" disabled  type="text" id="username"  placeholder="Entreprise" th:value="${offre.rec.entreprise}"  name="entreprise" >
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="form3Example2c"><strong>Lieu</strong></label>
+                                                        <input class="form-control" disabled type="text" id="form3Example2c" placeholder="Lieu" name="lieu" th:value="${offre.rec.lieu}"  >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row py-3">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="salaire"><strong>Salaire</strong></label>
+                                                        <input class="form-control" disabled  type="text" id="salaire"  placeholder="Salaire" th:value="${offre.salaire}"  name="salaire"  ></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="form3Example2x"><strong>Date de publication</strong></label>
+                                                        <input class="form-control" disabled type="text" id="form3Example2x" placeholder="Date de publication" name="date" th:value="${#dates.format(offre.datePublication,'yyyy-MM-dd')}" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row py-3">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="Description"><strong>Description</strong></label>
+                                                        <textarea class="form-control" disabled  type="text" id="Description"  rows="5" placeholder="Description" th:text="${offre.description}"  name="Description"  />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row py-3">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="Lettre"><strong>Lettre de motivation</strong></label>
+                                                        <textarea class="form-control" style="height: 100% !important;" rows="15" cols="50"  id="Lettre"  placeholder="Lettre de motivation"  name="lettre" ></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" control-id="ControlID-7">Enregistrer</button></div>
+                                            <div><label class="text-danger" th:text="${error}"></label></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="Footer :: footer"/>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script src="assets2/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets2/js/chart.min.js"></script>
+<script src="assets2/js/bs-init.js"></script>
+<script src="assets2/js/theme.js"></script>
+
+
+</body>
+</html>

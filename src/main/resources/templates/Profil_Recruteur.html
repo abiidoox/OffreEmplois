@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  th:replace="head_dashboards :: dash-head">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+</head>
+
+<body>
+<div id="wrapper">
+    <nav th:replace="Navbar_Recruteur :: navbar"/>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <nav   th:replace="NavAll :: navbar"/>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="container-fluid">
+                      <h3 class="text-dark mb-4">Profile</h3>
+                      <div class="row mb-3">
+                          <div class="col-lg-12">
+                              <div class="row">
+                                  <div class="col">
+                                      <div class="card shadow mb-3">
+                                          <div class="card-header py-3">
+                                              <p class="text-primary m-0 fw-bold">Information d'utilisateur</p>
+                                          </div>
+                                          <div class="card-body py-5">
+                                              <form th:action="@{/rec/edit}" method="post" th:object="${recruteur}">
+                                                  <input class="form-control" type="hidden" id="id"  name="id" th:value="${recruteur.id}" >
+                                                  <div class="row py-3">
+                                                      <div class="col">
+                                                          <div class="mb-3"><label class="form-label" for="username"><strong>Entreprise</strong></label>
+                                                              <input class="form-control" type="text" id="username" placeholder="Entreprise" name="entreprise" th:value="${recruteur.entreprise}" control-id="ControlID-3"></div>
+                                                      </div>
+                                                      <div class="col">
+                                                          <div class="mb-3"><label class="form-label" for="form3Example2c"><strong>Lieu</strong></label>
+                                                                <input class="form-control" type="text" id="form3Example2c" placeholder="Lieu" name="lieu" th:value="${recruteur.lieu}" control-id="ControlID-4">
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <!--<div class="row py-3">
+                                                      <div class="col">
+                                                          <div class="mb-3"><label class="form-label" for="first_name"><strong>Mail</strong></label>
+                                                              <input class="form-control" type="email" id="first_name" placeholder="Mail" name="mail" th:value="${recruteur.utilisateurs.mail}" control-id="ControlID-5"></div>
+                                                      </div>
+                                                      <div class="col">
+                                                          <div class="mb-3"><label class="form-label" for="last_name"><strong>Mot de passe</strong></label><input class="form-control" type="password" id="last_name" placeholder="Doe" name="password" th:value="${recruteur.utilisateurs.password.substring(0,8)}" control-id="ControlID-6"></div>
+                                                      </div>
+                                                  </div>-->
+                                                  <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" control-id="ControlID-7">Enregistrer</button></div>
+                                              </form>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+        </div>
+     <footer th:replace="footer :: footer"></footer>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script src="assets2/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets2/js/chart.min.js"></script>
+<script src="assets2/js/bs-init.js"></script>
+<script src="assets2/js/theme.js"></script>
+
+
+</body>
+</html>

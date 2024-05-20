@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="head :: head"></head>
+<body>
+
+<!-- ======= Header ======= -->
+<header th:replace="header :: header">
+</header><!-- End Header -->
+
+<section id="Login" class="hero d-flex align-items-center">
+<div class="container content" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <img th:src="@{assets/img/undraw_remotely_2j6y.svg}" alt="Image" class="img-fluid">
+      </div>
+      <div class="col-md-6 contents mt-5">
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-8">
+            <div class="mb-4">
+              <h3>Se connecter</h3>
+              <p class="mb-4">Veuillez saisir votre Email et votre mot de passe !</p>
+            </div>
+            <form th:action="@{/login}" method="post">
+              <div class="form-group first mb-2">
+                <label for="username">Email</label>
+                <input type="text" class="form-control" id="username" style="border-color: #4154f1" name="username">
+              </div>
+              <div class="form-group last mb-1">
+                <label for="password">Mot de passe</label>
+                <input type="password" class="form-control" id="password" style="border-color: #4154f1"  name="password">
+              </div>
+              <div class="d-flex mb-3 align-items-center">
+                <span class="m-0"><a href="#" class="forgot-pass">Mot de passe oublier</a></span>
+              </div>
+              <div th:if="${param.error}" class="mb-1">
+                <div class="error" style="color: red;">Email ou mot de passe incorrect</div>
+              </div>
+              <div class="d-flex align-items-center">
+              <input type="submit" value="Connexion" style="background: #4154f1;color:#ffffff" class="btn m-auto rounded">
+              </div>
+              <div class="d-flex mt-5 align-items-center">
+                <span class="m-lg-auto">Vous n'avez pas de compte ? <a th:href="@{chooseProfil}" class="forgot-pass">Créer un compte</a></span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<script src="../static/assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="head :: head">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<header th:replace="header :: header">
+</header><!-- End Header -->
+<section class="vh-100" style="background-color: #fff;">
+    <div class="container h-100 mt-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">S'inscrire</p>
+
+                                <form class="mx-1 mx-md-4"   method="post"
+                                      role="form"
+                                      th:action="@{/RegistreRecruteurX}"
+                                      th:object="${rec}" >
+
+                                    <div class="d-flex flex-row align-items-center mb-2">
+                                        <!--                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>-->
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="form3Example1c">Nom d'entreprise:</label>
+                                            <input type="text" id="form3Example1c" class="form-control" name="entreprise" />
+                                            <div class="text-danger"><span th:text="${ErreurEntreprise}"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-2">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="form3Example2c">Lieu :</label>
+                                            <select class="form-select rounded m-lg-1" id="form3Example2c" aria-label="ville" name="lieu">
+                                                <option selected>Ville</option>
+                                                <option value="Casablanca">Casablanca</option>
+                                                <option value="Agadir">Agadir</option>
+                                                <option value="Al Hocïema">Al Hocïema</option>
+                                                <option value="Béni Mellal">Béni Mellal</option>
+                                                <option value="El Jadida">El Jadida</option>
+                                                <option value="Errachidia">Errachidia</option>
+                                                <option value="Fès">Fès</option>
+                                                <option value="Kénitra">Kénitra</option>
+                                                <option value="Khénifra">Khénifra</option>
+                                                <option value="Khouribga">Khouribga</option>
+                                                <option value="Larache">Larache</option>
+                                                <option value="Marrakech">Marrakech</option>
+                                                <option value="Meknès">Meknès</option>
+                                                <option value="Nador">Nador</option>
+                                                <option value="Ouarzazate">Ouarzazate</option>
+                                                <option value="Oujda">Oujda</option>
+                                                <option value="Rabat">Rabat</option>
+                                                <option value="Safi">Safi</option>
+                                                <option value="Settat">Settat</option>
+                                                <option value="Salé">Salé</option>
+                                                <option value="Tanger">Tanger</option>
+                                                <option value="Taza">Taza</option>
+                                                <option value="Tétouan">Tétouan</option>
+
+                                            </select>
+                                            <div class="text-danger"><span th:text="${Erreurlieu}"></span></div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-2">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="form3Example3c">Email :</label>
+                                            <input type="email" id="form3Example3c" class="form-control" name="mail" />
+                                            <div class="text-danger"><span th:text="${ErreurMail}"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row align-items-center mb-2">
+
+                                        <div class="form-outline flex-fill mb-0">
+                                            <label class="form-label" for="form3Example4c">Mot de passe :</label>
+                                            <input type="password" id="form3Example4c" class="form-control" name=password />
+                                            <div class="text-danger"><span th:text="${ErreurPassword}"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-check d-flex justify-content-center mb-5">
+                                        <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                        <label class="form-check-label" for="form2Example3">
+                                            J'accepte toutes <a href="#!">les conditions d'utilisation</a>
+                                        </label>
+                                    </div>
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4 ">
+                                        <button type="submit"  style="background-color: #4154f1;color: #ffffff" class="btn btn-lg">Enregistrer</button>
+                                    </div>
+                                    <p class="text-center">Vous avez déjà un compte? <a th:href="@{/Login}">Se connecter</a></p>
+                                </form>
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <img th:src="@{assets/img/20943447.jpg}"
+                                     class="img-fluid" alt="Sample image">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

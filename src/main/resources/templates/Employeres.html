@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  th:replace="head_dashboards :: dash-head">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+</head>
+<body>
+<div id="wrapper">
+    <nav th:replace="Navbar_Admin :: navbar"/>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <nav th:replace="NavAll :: navbar"/>
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-5 mt-5">
+
+                </div>
+                <div class="card shadow">
+                    <div class="card-header py-3 row mb-2">
+                        <p class="text-primary m-0 fw-bold col-6 ">Liste des chercheurs d'emploi</p>
+                        <p class="text-primary m-0 fw-bold text-end col-6">Nombre de chercheurs d'emploi: <span class="text-success" th:text="${counChercheur}"></span></p>
+                    </div>
+                    <div class="card-body mt-3 row">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable2">
+                                <thead>
+                                <tr>
+                                    <th style="width: 20% !important;"></th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Email</th>
+                                    <th style="width: 20% !important;"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="Recruteur :${chercheur}">
+                                    <td><img class="rounded-circle me-2" width="30" height="30" th:src="@{'https://ui-avatars.com/api/?name=' + ${Recruteur.nom} +' '+ ${Recruteur.prenom}}">
+                                    </td>
+                                    <td th:text="${Recruteur.nom}"></td>
+                                    <td th:text="${Recruteur.prenom}"></td>
+                                    <td th:text="${Recruteur.utilisateurs.mail}"></td>
+                                    <td><a th:href="@{/Employer/delete/{id}(id=${Recruteur.id})}"  class="btn bi-arrow-down-circle w-100 d-sm-inline btn-danger"><i class="fa fa-trash"></i></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <footer th:replace="footer :: footer"/>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script src="assets2/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets2/js/chart.min.js"></script>
+<script src="assets2/js/bs-init.js"></script>
+<script src="assets2/js/theme.js"></script>
+
+
+</body>
+</html>

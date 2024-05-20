@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head th:replace="head :: head">
+</head>
+
+<body>
+<header th:replace="header :: header">
+</header>
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero d-flex align-items-center" style="height: 85vh;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1 data-aos="fade-up">Trouvez votre futur emploi</h1>
+                <h2 data-aos="fade-up" data-aos-delay="400">Maroc Emploi : Trouvez un job au Maroc et développez vos opportunités de carrière.
+                    Poster de nouvelles offres d'emploi, rechercher des candidats.
+                </h2>
+            </div>
+            <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+                <img th:src="@{assets/img/hero-img.png}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-12">
+                <div data-aos="fade-up" data-aos-delay="200" class="">
+                    <div class="text-center text-lg-start">
+                        <nav class="navbar navbar-light">
+                            <div class="container-fluid">
+                                <form class="d-flex input-group" th:action="@{/index(page=1)}" method="get">
+                                    <input
+                                            type="text"
+                                            class="form-control rounded m-lg-1"
+                                            placeholder="Mot clé"
+                                            aria-label="Mot_cle"
+                                            aria-describedby="Mot_cle-addon"
+                                            name="jobSearch"
+                                            th:value="${jobSearch}"
+                                    />
+                                  <!--  <select class="form-select rounded m-lg-1" aria-label="ville">
+                                        <option selected>Ville</option>
+                                        <option value="Casablanca">Casablanca</option>
+                                        <option value="Agadir">Agadir</option>
+                                        <option value="Al Hocïema">Al Hocïema</option>
+                                        <option value="Béni Mellal">Béni Mellal</option>
+                                        <option value="El Jadida">El Jadida</option>
+                                        <option value="Errachidia">Errachidia</option>
+                                        <option value="Fès">Fès</option>
+                                        <option value="Kénitra">Kénitra</option>
+                                        <option value="Khénifra">Khénifra</option>
+                                        <option value="Khouribga">Khouribga</option>
+                                        <option value="Larache">Larache</option>
+                                        <option value="Marrakech">Marrakech</option>
+                                        <option value="Meknès">Meknès</option>
+                                        <option value="Nador">Nador</option>
+                                        <option value="Ouarzazate">Ouarzazate</option>
+                                        <option value="Oujda">Oujda</option>
+                                        <option value="Rabat">Rabat</option>
+                                        <option value="Safi">Safi</option>
+                                        <option value="Settat">Settat</option>
+                                        <option value="Salé">Salé</option>
+                                        <option value="Tanger">Tanger</option>
+                                        <option value="Taza">Taza</option>
+                                        <option value="Tétouan">Tétouan</option>
+
+                                    </select>!-->
+                                    <button type="submit" class="btn btn-outline-primary rounded m-lg-1 m-lg-auto">Chercher</button>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section><!-- End Hero -->
+
+<main id="main">
+    <section class="container-fluid">
+        <div class="row justify-content-center" >
+
+            <div class="card col-lg-5 m-2 shadow" th:each="entry : ${scrapedData}">
+                <div class="card-body">
+                    <h5 class="card-title custom-card-title" th:text="${entry.value.titre}"></h5>
+                    <!--<p class="card-text custom-card-description" th:text="${#strings.length(entry.value.description) &gt; 30 ? #strings.substring(entry.value.description, 0, 30) + '...' : entry.value.description}"></p>-->
+                    <p class="card-text custom-card-entreprise mb-1" th:text="'Entreprise: ' + ${entry.value.rec.entreprise}"></p>
+                    <p class="card-text custom-card-date mb-1 small">
+                        Date de publication: <span th:text="${#dates.format(entry.value.datePublication, 'yyyy-MM-dd')}"></span>
+                    </p>
+                    <p class="card-text custom-card-entreprise mb-1" th:text="'Ville: ' + ${entry.value.rec.lieu}"></p>
+                    <!--<p class="card-text custom-card-salaire" th:text="${entry.value.salaire}"></p>-->
+                    <a href="#" class="card-link custom-card-link" th:href="@{${entry.key.link}}" target="_blank">Voir les détails</a>
+                    <span class="badge badge-secondary custom-card-source position-absolute" style="bottom: 5px; right: 5px;" th:text="${entry.key.source}">Source</span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-5">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" th:classappend="${page == 1} ? disabled">
+                            <a class="page-link" th:href="@{/index(page= 1, jobSearch=${jobSearch})}" aria-label="First">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <li class="page-item" th:classappend="${page == 1} ? disabled">
+                            <a class="page-link" th:href="@{/index(page=${page - 1}, jobSearch=${jobSearch})}" aria-label="Previous">
+                                <span aria-hidden="true">&lsaquo;</span>
+                                <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <li class="page-item" th:classappend="${currentPage == page} ? active" >
+                            <a class="page-link" th:href="@{/index(page=${page}, jobSearch=${jobSearch})}" th:text="${page}"></a>
+                        </li>
+                        <li class="page-item" th:classappend="${page == numberPages} ? disabled">
+                            <a class="page-link" th:href="@{/index(page=${page + 1}, jobSearch=${jobSearch})}" aria-label="Next">
+                                <span aria-hidden="true">&rsaquo;</span>
+                                <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <li class="page-item" th:classappend="${page == numberPages} ? disabled">
+                            <a class="page-link" th:href="@{/index(page=${numberPages}, jobSearch=${jobSearch})}" aria-label="Last">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only"></span>
+                            </a>
+                        </li>
+                        <!-- Affichage du nombre total de pages -->
+                        <li class="page-item disabled">
+                            <span class="page-link" th:text="'Nombre total de pages :' + ${numberPages}"></span>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+
+    </section>
+
+
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer th:replace="footer :: footer"/>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script th:src="@{assets/vendor/purecounter/purecounter_vanilla.js}"></script>
+<script th:src="@{assets/vendor/aos/aos.js}"></script>
+<script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{assets/vendor/glightbox/js/glightbox.min.js}"></script>
+<script th:src="@{assets/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+<script th:src="@{assets/vendor/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{assets/js/main.js}"></script>
+
+<style>
+    .custom-card-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .custom-card-description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .custom-card-entreprise {
+        font-size: 12px;
+        color: #555;
+    }
+
+    .custom-card-date {
+        font-size: 12px;
+        color: #555;
+    }
+
+    .custom-card-salaire {
+        font-size: 12px;
+        color: #555;
+    }
+
+    .custom-card-link {
+        font-size: 14px;
+        color: #007bff;
+    }
+
+    .custom-card-link:hover {
+        text-decoration: none;
+        color: #0056b3;
+    }
+
+    .custom-card-source {
+        font-size: 12px;
+        background-color: #888;
+        color: #fff;
+        padding: 2px 5px;
+    }
+
+</style>
+</body>
+
+</html>

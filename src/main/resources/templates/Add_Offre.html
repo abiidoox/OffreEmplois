@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  th:replace="head_dashboards :: dash-head">
+</head>
+<body>
+<div id="wrapper">
+  <nav th:replace="Navbar_Recruteur :: navbar"/>
+  <div class="d-flex flex-column" id="content-wrapper">
+    <div id="content">
+      <nav th:replace="NavAll :: navbar"/>
+      <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-5 mt-5">
+        </div>
+        <div class="row">
+          <div class="container justify-content-center">
+            <div class="row align-content-center card col-lg-10 m-auto py-5 shadow">
+              <section class="clean-block clean-form dark col-lg-8 card-body">
+                <div class="container">
+                  <div class="block-heading">
+                    <h2 class="text-info" style="color: #3C62D1 !important;">Ajouter une offre :</h2>
+                  </div>
+                  <form th:action="@{/offres/save}" th:object="${offre}" method="post">
+                    <input type="hidden" id="id" name="id" />
+                    <div class="mb-3"><label class="form-label" for="name">Titre</label>
+                      <input class="form-control" type="text" id="name" name="titre" ></div>
+                    <div class="mb-3"><label class="form-label" for="Salaire" >Salaire</label>
+                      <input class="form-control" type="text" id="Salaire" name="Salaire" ></div>
+                    <div class="mb-3"><label class="form-label" for="message" >Description</label>
+                      <textarea class="form-control" id="message" name="Description" ></textarea></div>
+                    <div class="mb-3"><button class="btn btn-primary" style="background-color: #3C62D1 !important;" type="submit">Enregistrer</button></div>
+                  </form>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer th:replace="footer :: footer"></footer>
+  </div>
+  <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script src="/assets2/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets2/js/chart.min.js"></script>
+<script src="/assets2/js/bs-init.js"></script>
+<script src="/assets2/js/theme.js"></script>
+
+
+</body>
+</html>

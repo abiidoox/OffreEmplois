@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  th:replace="head_dashboards :: dash-head">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+</head>
+<body>
+<div id="wrapper">
+  <nav th:replace="Navbar_Employer :: navbar"/>
+  <div class="d-flex flex-column" id="content-wrapper">
+    <div id="content">
+      <nav th:replace="NavAll :: navbar"/>
+      <div class="container-fluid">
+        <div class="d-sm-flex justify-content-between align-items-center mb-5 mt-5">
+        </div>
+        <div class="row">
+          <div class="container justify-content-center">
+            <div class="row">
+              <div class="col-lg-12 mx-auto mb-4">
+                <div class="section-title text-center ">
+                </div>
+              </div>
+            </div>
+            <div class="row align-content-center card col-lg-10 m-auto py-5 mb-5 shadow">
+              <section class="clean-block clean-form dark col-lg-8 card-body">
+                <div class="container">
+                  <div class="block-heading">
+                    <h2 class="text-info text-center" style="color: #3C62D1 !important;">Information sur l'annonce</h2>
+                  </div>
+                  <form action="" method="post">
+                    <input type="hidden" id="id" name="id" th:value="${offre.id}"/>
+                    <div class="mb-3"><label class="form-label" for="name">Titre</label>
+                      <input class="form-control" disabled type="text" id="name" name="titre" th:value="${offre.titre}"></div>
+                    <div class="mb-3"><label class="form-label" for="Salaire" >Salaire</label>
+                      <input class="form-control" type="text" disabled id="Salaire" name="Salaire" th:value="${offre.salaire}"></div>
+                    <div class="mb-3"><label class="form-label"  for="message" >Description</label>
+                      <textarea class="form-control" id="message" disabled name="Description" rows="10" th:text="${offre.description}"></textarea></div>
+                  </form>
+
+                </div>
+
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <footer th:replace="Footer :: footer"/>
+  </div>
+  <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script src="assets2/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets2/js/chart.min.js"></script>
+<script src="assets2/js/bs-init.js"></script>
+<script src="assets2/js/theme.js"></script>
+
+
+</body>
+</html>

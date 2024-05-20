@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head  th:replace="head_dashboards :: dash-head">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+</head>
+<body>
+<div id="wrapper">
+    <nav th:replace="Navbar_Employer :: navbar"/>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <nav th:replace="NavAll :: navbar"/>
+            <div class="container-fluid">
+                <div class="d-sm-flex justify-content-between align-items-center mb-5 mt-5">
+                    <h3 class="text-dark mb-0">Tableau de bord</h3>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-12 col-xl-12 mb-4">
+                        <div class="card shadow border-start-primary py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col me-2 text-center">
+                                        <div class="text-uppercase text-primary fw-bold text-m mb-1"><span>Mes postulations</span></div>
+                                        <div class="text-dark fw-bold h5 mb-0 mx-3"><span th:text="${countofferpostuler}"></span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container-fluid px-0">
+                        <div class="row">
+                            <div class="col-lg-12 mx-auto mb-4">
+                                <div class="section-title text-center ">
+                                    <h2>Mes postulations</h2>
+                                    <p>Vous pouvez consulter vos postulations</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form th:action="@{/candidature/cle}" method="get" class="career-form mb-60 justify-content-center">
+                            <div class="row">
+                                <div class="col-md-4 col-lg-10 my-3">
+                                    <div class="input-group position-relative">
+                                        <input type="text" class="form-control" placeholder="Mot clé" id="keywords" name="cle">
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-lg-1 my-3 justify-content-end text-end m-auto">
+                                    <button type="submit" class="btn btn-lg btn-block btn-light btn-custom" id="contact-submit">
+                                        Chercher
+                                    </button>
+                                </div>
+                                <div class="col-md-1 col-lg-1 my-3 justify-content-end text-end m-auto">
+                                    <button type="submit" class="btn btn-lg btn-block btn-light btn-custom" id="contact-submit-1">
+                                        Annuler
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-lg-12 mx-auto">
+                                <div class="career-search mb-60">
+
+                                    <div class="filter-result mt-lg-5 shadow">
+                                        <div  class="job-box d-md-flex align-items-center justify-content-between mb-30" th:each="candidature: ${ListCandidatures}">
+                                            <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                                <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                                    <span th:text="${#strings.toUpperCase(#strings.substring(candidature.off.titre,0,1)) }"></span>
+                                                </div>
+                                                <div class="job-content mx-5">
+                                                    <h5 class="text-center text-md-left"><span th:text="${#strings.toUpperCase(candidature.off.titre)}"></span></h5>
+                                                    <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                                                        <li class="mr-md-4">
+                                                            <i class="zmdi zmdi-money-box mr-2"></i><span th:text="${candidature.off.salaire}"></span>
+                                                        </li>
+                                                        <li class="mr-md-4 mx-3">
+                                                            <i class="zmdi zmdi-time mr-2"></i> <span th:text="${#dates.format(candidature.dateCandidature,'yyyy-MM-dd')}"></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="job-right my-4 flex-shrink-0">
+                                                <a th:href="@{/Offre/select/Employer/{id}(id=${candidature.id.offId})}" class="btn bi-arrow-down-circle w-100 d-sm-inline btn-primary"><i class="fa fa-eye"></i></a>
+                                                <a th:href="@{/candidature/delete/{id}(id=${candidature.id.offId})}"  class="btn bi-arrow-down-circle w-100 d-sm-inline btn-danger"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="footer :: footer"></footer>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+
+<script src="assets2/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets2/js/chart.min.js"></script>
+<script src="assets2/js/bs-init.js"></script>
+<script src="assets2/js/theme.js"></script>
+
+
+</body>
+</html>

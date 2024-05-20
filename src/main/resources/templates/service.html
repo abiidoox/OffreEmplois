@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head th:replace="head :: head">
+</head>
+
+<body>
+<header th:replace="header :: header">
+</header>
+
+<main id="main" class="mt-5 pt-5">
+
+    <!-- ======= Values Section ======= -->
+    <section id="values" class="values mt-5">
+
+        <div class="container" data-aos="fade-up">
+
+            <header class="section-header">
+                <p>Découvrez une multitude d'opportunités professionnelles à travers les sites officiels.</p>
+            </header>
+
+            <div class="row">
+
+                <div class="col-lg-4 mt-4 mt-lg-0 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                    <div class="box">
+                        <svg class="mb-4 mt-4" xmlns="http://www.w3.org/2000/svg" height="5em" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm20.1 198.1c4-25.2 34.2-42.1 59.9-42.1s55.9 16.9 59.9 42.1c1.7 11.1-11.4 18.3-19.8 10.8l-9.5-8.5c-14.8-13.2-46.2-13.2-61 0L288 217c-8.4 7.4-21.6.3-19.9-10.9zM168 160c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm230.9 146C390 377 329.4 432 256 432h-16c-73.4 0-134-55-142.9-126-1.2-9.5 6.3-18 15.9-18h270c9.6 0 17.1 8.4 15.9 18z"/></svg>
+
+                        <h3>HireLink</h3>
+                        <p>Découvrez des opportunités d'emploi sur <strong>HireLink</strong> et boostez votre carrière professionnelle.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-4 mt-lg-0 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+                    <a href="https://ma.indeed.com/" target="_blank" rel="noopener noreferrer">
+                        <div class="box">
+                            <img src="assets/img/Indeed-Emblem.png" class="img-fluid" alt="">
+                            <h3>Indeed</h3>
+                            <p>Découvrez des opportunités d'emploi sur <strong>Indeed</strong> et trouvez la carrière de vos rêves.</p>
+                        </div>
+                    </a>
+                </div>
+
+
+                <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="600">
+                    <a href="https://www.rekrute.com/offres-emploi-maroc.html" target="_blank" rel="noopener noreferrer">
+                        <div class="box">
+                            <img src="assets/img/Rekrute.jpg" class="img-fluid" alt="">
+                            <h3>Rekrute</h3>
+                            <p>Découvrez des opportunités d'emploi sur <strong>ReKrute</strong> et boostez votre carrière professionnelle.</p>
+                        </div>
+                    </a>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section><!-- End Values Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer th:replace="footer :: footer"/>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script th:src="@{assets/vendor/purecounter/purecounter_vanilla.js}"></script>
+<script th:src="@{assets/vendor/aos/aos.js}"></script>
+<script th:src="@{assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{assets/vendor/glightbox/js/glightbox.min.js}"></script>
+<script th:src="@{assets/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+<script th:src="@{assets/vendor/swiper/swiper-bundle.min.js}"></script>
+<script th:src="@{assets/vendor/php-email-form/validate.js}"></script>
+
+<!-- Template Main JS File -->
+<script th:src="@{assets/js/main.js}"></script>
+
+<style>
+    .custom-card-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .custom-card-description {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .custom-card-entreprise {
+        font-size: 12px;
+        color: #555;
+    }
+
+    .custom-card-date {
+        font-size: 12px;
+        color: #555;
+    }
+
+    .custom-card-salaire {
+        font-size: 12px;
+        color: #555;
+    }
+
+    .custom-card-link {
+        font-size: 14px;
+        color: #007bff;
+    }
+
+    .custom-card-link:hover {
+        text-decoration: none;
+        color: #0056b3;
+    }
+
+    .custom-card-source {
+        font-size: 12px;
+        background-color: #888;
+        color: #fff;
+        padding: 2px 5px;
+    }
+
+</style>
+</body>
+
+</html>

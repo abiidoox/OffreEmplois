@@ -1,0 +1,26 @@
+<nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" th:fragment="navbar">
+  <div class="container-fluid">
+    <ul class="navbar-nav flex-nowrap ms-auto">
+      <div class="d-none d-sm-block topbar-divider"></div>
+      <li class="nav-item dropdown no-arrow">
+        <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+          <span class="d-none d-lg-inline me-2 text-gray-600 small" id="user">
+          </span>
+          <img class="border rounded-circle img-profile" src="https://api.multiavatar.com/Binx Bond.svg"></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const user = document.getElementById("user");
+
+    fetch('/Username')
+            .then(response => response.text()) // Convert the response to text
+            .then(data => {
+              user.innerText = data; // Set the retrieved data as the inner text of the 'user' element
+            })
+            .catch(error => console.error(error));
+  </script>
+
+</nav>
+
